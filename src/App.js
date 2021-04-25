@@ -21,6 +21,7 @@ import {
   Route,
   Link
 } from "react-router-dom";
+import ProjectPage from './pages/ProjectPage';
 
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
@@ -69,8 +70,8 @@ function App() {
           <Route path="/project-creation">
             <ProjectCreationPage />
           </Route>
-          <Route path="/private-project-page">
-            <PrivateProjectPage />
+          <Route path="/projects/:projectId">
+            <ProjectPage />
           </Route>
           <Route path="/">
             <HomePage />

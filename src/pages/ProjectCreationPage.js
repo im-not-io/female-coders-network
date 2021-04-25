@@ -49,10 +49,7 @@ export default function ProjectCreationPage() {
         setTimeZone(event.target.value);
     };
 
-    const [role, setRole] = React.useState(''); 
-    const handleRole = (event) => {
-        setRole(role.push(event.target.value)); 
-    }
+    const [roles, setRoles] = React.useState([]);
 
     const [startDate, setStartDate] = React.useState(new Date('2021-04-25T21:11:54'));
     const handleStartDate = (date) => {
@@ -65,21 +62,20 @@ export default function ProjectCreationPage() {
     const [timezone, setTimeZone] = React.useState('');
     const buttonId = 'createProjectButton';
 
-    console.log(role)
   
     function createProject() {
         console.log("start createProject")
-        const arr = [{
-            "project-name": name ,
-            "desired-roles" : role, 
+
+        const payload = {
+            "project-name": name,
+            "desired-roles" : roles, 
             "age": age,
             "start-date": startDate, 
             "end-date" : endDate, 
             "time-zone": timezone,
-          }]; 
+          }; 
 
-        console.log(arr); 
-        return arr;  
+        return payload;  
     }
 
     
@@ -107,6 +103,7 @@ export default function ProjectCreationPage() {
                                 id="tags-filled"
                                 options={topRoles.map((option) => option.title)}
                                 autoSelect
+                                onChange={(event, value) => setRoles(value)}
                                 freeSolo
                                 renderTags={(value, getTagProps) =>
                                     value.map((option, index) => (
@@ -114,9 +111,7 @@ export default function ProjectCreationPage() {
                                     ))
                                 }
                                 renderInput={(params) => (
-                                    <TextField {...params} label="Desired Roles" placeholder="Roles" 
-                                        onChange={(handleRole)}
-                                        value={(role)}
+                                    <TextField {...params} label="Desired Roles" placeholder="Roles"
                                     />
                                 )}
                             />

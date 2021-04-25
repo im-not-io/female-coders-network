@@ -9,6 +9,8 @@ import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import { ScatterPlot } from '@material-ui/icons';
 import { Button } from '@material-ui/core';
+import firebase from 'firebase/app';
+import 'firebase/database';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -30,7 +32,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-export default function PrivateProjectPage() {
+
+export default function PrivateProjectPage(props) {
     const classes = useStyles();
     
     return (
@@ -59,28 +62,29 @@ export default function PrivateProjectPage() {
                     <Grid item xs={11}>
                         <Paper className={classes.paper}>
                            <div className={classes.ppp}>
-                               PHOTO OF PROJECT 
+                                <img src={props.photoUrl} />
                            </div>
                            <div className={classes.ppp}>
-                               description 
+                               {props.description} 
                            </div>
                            <div className={classes.ppp}>
-                               mentor section
-                               
+                               <div>{props.mentor.name}</div>
+                               <div>{props.mentor.description}</div>
+                               <a href={"mailto:" + props.mentor.email}>Contact your mentor: {props.mentor.email}</a>
                            </div>
-                           <Button color="primary">Contact the mentor </Button>
                            <div className={classes.ppp}>
                                <p> List of members</p>
-                               <list>
-                                <li>Test 1 </li>
-                                <li>Test2  </li>
-                               </list>
+                                {props.members.map((member) => {
+                                    return <div>{member.name}</div>
+                                })}
                            </div>
                            <div className={classes.ppp}>
-                               Project details 
+                                {props.links.map((link) => {
+                                    return <div><a href={link.url}>{link.name}</a></div>
+                                })}
                            </div>
                            <div className={classes.ppp}>
-                               Links of the channel 
+                                <Button variant="contained">Edit project details</Button>
                            </div>
 
 
