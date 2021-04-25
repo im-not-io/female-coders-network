@@ -13,6 +13,7 @@ import { Button } from '@material-ui/core';
 const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
+        "margin-top": "5%" 
        
     },
     paper: {
@@ -44,37 +45,44 @@ export default function HomePage() {
 
             <div className={classes.root}>
                 <Grid container spacing={10}  justify="space-evenly">
-                    <Grid item xs={12}>
+                    <Grid item xs={11} >
                         <Paper className={classes.paper}>
                             We help connect women in tech 
                         </Paper>
                     </Grid>
-                    <Grid item xs={4}>
+                    <Grid item xs={5}>
                         <Paper className={classes.paper}>
-                            Explore and join tech projects led by women 
+                            <p padding="10px">Explore and join tech projects led by women</p>
                             <div style={
                                 {
                                     backgroundImage: "url(" + project + ")",
-                                    padding: "10px",
+                                    padding: "10px", 
+                                    height: "450px",
+                                    widht: "auto", 
+                                    backgroundSize: "cover",
+                                    borderRadius: "5px"
+
                             
-                                }}>
-                                PHOTO
-                            </div>
-                            <Button color="primary" variant="contained"> Find candidates for your project</Button>
+                                }}></div>
+                                <p></p>
+                            <Button padding="40px" color="primary" variant="contained"><a path="/project-creation">Find candidates for your project </a> </Button>
                         </Paper>
                     </Grid>
-                    <Grid item xs={4}>
+                    <Grid item xs={5}>
                         <Paper className={classes.paper}>
-                            Connect with other women in tech and take on projects together
+                           <p padding="10px"> Connect with other women in tech and take on projects together</p>
                             <div style={
                                 {
-                                    backgroundImage : "url("+group+")", 
+                                    backgroundImage: "url("+group+")", 
                                     padding: "10px", 
+                                    height: "450px",
+                                    widht: "auto", 
+                                    backgroundSize: "cover",
+                                    borderRadius: "5px"
                                 }
-                            }>
-                                PHOTO
-                            </div>
-                            <Button color="primary" variant="contained"> Find Projects to apply to</Button>
+                            }></div>
+                            <p></p>
+                            <Button padding="40px" color="primary" variant="contained"> Find Projects to apply to</Button>
                         </Paper>
                     </Grid>
 

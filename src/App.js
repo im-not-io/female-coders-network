@@ -68,6 +68,9 @@ function App() {
           <Route path="/project-creation">
             <ProjectCreationPage />
           </Route>
+          <Route path="/private-poject-page">
+            <privatePojectPage />
+          </Route>
           <Route path="/">
             <HomePage />
           </Route>
