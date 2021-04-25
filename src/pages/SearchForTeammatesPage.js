@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import NavBar from '../components/NavBar';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
-//import SimpleCard from '../components/CardParticpant';
+import SimpleCard from '../components/CardParticpant';
 
 
 
@@ -57,7 +57,7 @@ export default function SearchForTeammatesPage() {
               <h1>Search for teammates page</h1>
               <p>Description about how the swipey thing works </p>
                 <div id="cards" className = {classes.participantToSwipe}>
-                  {/*<SimpleCard />*/}           
+                  <SimpleCard />           
                 </div> 
    
               <div className={classes.invites}> 
