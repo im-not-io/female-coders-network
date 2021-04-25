@@ -14,6 +14,7 @@ import HomePage from './pages/HomePage';
 import PrivateProjectPage from './pages/PrivateProjectPage'; 
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import firebase from 'firebase/app';
+import ProjectsPage from './pages/ProjectsPage'; 
 
 import {
   BrowserRouter as Router,
@@ -69,6 +70,9 @@ function App() {
           </Route>
           <Route path="/project-creation">
             <ProjectCreationPage />
+          </Route>
+          <Route path="/project">
+            <ProjectsPage />
           </Route>
           <Route path="/projects/:projectId">
             <ProjectPage />

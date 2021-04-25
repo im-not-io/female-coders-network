@@ -65,7 +65,7 @@ export default function HomePage() {
                             
                                 }}></div>
                                 <p></p>
-                            <Button padding="40px" color="primary" variant="contained"><a path="/project-creation">Find candidates for your project </a> </Button>
+                            <Button padding="40px" color="primary" variant="contained" onClick={() => window.location = "/search-for-teammates" }>Find candidates for your project</Button>
                         </Paper>
                     </Grid>
                     <Grid item xs={5}>
@@ -82,7 +82,7 @@ export default function HomePage() {
                                 }
                             }></div>
                             <p></p>
-                            <Button padding="40px" color="primary" variant="contained"> Find Projects to apply to</Button>
+                            <Button padding="40px" color="primary" variant="contained" onClick={() => window.location = "/projects" }> Find Projects to apply to</Button>
                         </Paper>
                     </Grid>
 

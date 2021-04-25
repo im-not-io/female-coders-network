@@ -34,18 +34,17 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-export default function LoginPage() {
+export default function ProjectsPage() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [errorMessage, setErrorMessage] = React.useState('');
   const [open, setOpen] = React.useState(false);
   const buttonId = 'loginButton';
   const history = useHistory();
-
   
   function login() {
     firebase.auth().signOut();
-    const email = document.getElementById("email").value;
-    const password = document.getElementById("password").value;
+    const email = 'shion8822@gmail.com';
+    const password = 'testPassword';
     setAnchorEl(document.getElementById(buttonId));
     firebase.auth().signInWithEmailAndPassword(email, password)
       .then((userCredential) => {
@@ -66,39 +65,9 @@ export default function LoginPage() {
       <NavBar />
       <Grid container spacing={3} className={classes.grid} justify="center">
         <Grid item xs={4}>
-          <Paper className={classes.paper}>
-            <Typography variant="h1" component="h1">
-              Sign In
-            </Typography>
-            <Grid container item xs={12} justify="center">
-              <Grid item xs={12}>
-                <TextField label='Email' fullWidth id="email" />
-              </Grid>
-            </Grid>
-            <Grid container item xs={12} justify="center">
-              <Grid item xs={12}>
-                <TextField label='Password' type="password" id="password" fullWidth />
-              </Grid>
-            </Grid>
-            <Grid container item xs={12} justify="center">
-              <Grid item xs={12} className={classes.button}>
-                <Button id={buttonId} variant="contained" color="primary" fullWidth onClick={login} >
-                  Sign In
-                </Button>
-              </Grid>
-              <Grid item xs={12} className={classes.button}>
-                <Collapse in={open}>
-                  <Alert
-                    severity="error"
-                  ><Typography component='div' variant="body1" className={classes.alert}>
-                      {errorMessage}
-                  </Typography></Alert>
-                </Collapse>
-              </Grid>
-            </Grid>
-          </Paper>
+            Projects
         </Grid>
-      </Grid>
+    ∏</Grid>
     </div>
 
   );
