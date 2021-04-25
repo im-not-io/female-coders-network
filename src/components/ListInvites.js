@@ -13,9 +13,8 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
-import FolderIcon from '@material-ui/icons/Folder';
-import DeleteIcon from '@material-ui/icons/Delete';
-import { pink } from '@material-ui/core/colors';
+
+import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -44,8 +43,6 @@ export default function InteractiveList({ inviteList, setInviteList }) {
         })    )
         
     }
-        
-
 
     return (
         <div className={classes.root}>
@@ -61,10 +58,10 @@ export default function InteractiveList({ inviteList, setInviteList }) {
                                 <ListItem>
                                     <ListItemText
                                         primary={name}
-                                        secondary={secondary ? 'Secondary text' : null}
+                                        secondary={secondary ? 'Secondary text' : "skillset"} // implemente skillset if we have time 
                                     />
                                     <ListItemSecondaryAction>
-                                        <button size="small" variant="contained" color="primary" onClick={() => removeFromInvites(name)}>remove</button>
+                                        <Button size="small" variant="contained" color="default" onClick={() => removeFromInvites(name)}>remove</Button>
                                     </ListItemSecondaryAction>
                                 </ListItem>
                             )
