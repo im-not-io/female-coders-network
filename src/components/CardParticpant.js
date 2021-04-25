@@ -84,7 +84,7 @@ export default function SimpleCard({ setInviteList, inviteList }) {
         <CardActions style={{display: "grid", placeContent: "center"}}>
           <div  style={{display: "grid", columnGap: "10px", gridTemplateColumns: "auto auto auto"}}>
           <Button size="small" variant="contained" color="primary" button onClick={() => addToInvites(name)}>YES</Button>
-          <Button size="small" variant="contained" color="secondary" button onClick={() => alert("You have removed an invitation")} >NO</Button>
+          <Button size="small" variant="contained" color="secondary" button onClick={() => alert("You have permantly deleted a candidate")} >NO</Button>
           <Button size="small" color="secondary" button onClick={() => setCounter(counter => counter + 1)} >Next person</Button>
           </div>
         </CardActions>

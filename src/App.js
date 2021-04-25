@@ -9,6 +9,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import LoginPage from './pages/LoginPage';
 import CreateAccountPage from './pages/CreateAccountPage';
 import SearchForTeammatesPage from './pages/SearchForTeammatesPage';
+import HomePage from './pages/HomePage'; 
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import firebase from 'firebase/app';
 
@@ -64,7 +65,7 @@ function App() {
             <SearchForTeammatesPage />
           </Route>
           <Route path="/">
-            home
+            <HomePage />
           </Route>
         </Switch>
       </div>
