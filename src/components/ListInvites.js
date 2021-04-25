@@ -77,35 +77,4 @@ export default function InteractiveList({ inviteList, setInviteList }) {
 
     )
 
-    inviteList.map(name => {
-
-        return (
-            <div className={classes.root}>
-                <Grid item xs={12} md={6}>
-                    <Typography variant="h6" className={classes.title}>
-                        Invites send :
-            </Typography>
-                    <div className={classes.demo}>
-                        <List dense={dense}>
-
-                            <ListItem>
-                                <ListItemText
-                                    primary={name}
-                                    secondary={secondary ? 'Secondary text' : null}
-                                />
-                                <ListItemSecondaryAction>
-                                    <IconButton edge="end" aria-label="delete">
-                                        <DeleteIcon />
-                                    </IconButton>
-                                </ListItemSecondaryAction>
-                            </ListItem>,
-
-            </List>
-                    </div>
-                </Grid>
-            </div>
-        )
-    }
-
-    );
 }
