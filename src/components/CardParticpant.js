@@ -39,7 +39,7 @@ const data = [
     "skills"    : ["Javascript","C++"],
   },
   {
-    "nickname"  : "NickNick", 
+    "nickname"  : "Nick-Nick", 
     "interests" : ["Drones", "Math"],
     "skills"    : ["React", "Fire"],
   }
@@ -53,11 +53,15 @@ export default function SimpleCard({setInviteList, inviteList}) {
       setInviteList(inviteList.concat([name])) 
   }
 
+  function removeFromInvites(name) {
+    inviteList.pop([name])
+}
+
 
   return data.map(n => {
         const name = n.nickname;
-        const skills = n.skills; 
-        const interests = n.interests; 
+        const skills = n.skills.map(n => n+", "); 
+        const interests = n.interests.map(n=> n+", "); 
 
         
 
@@ -79,7 +83,7 @@ export default function SimpleCard({setInviteList, inviteList}) {
             </CardContent>
             <CardActions>
               <Button size="small" className={classes.yesno}  button onClick={() => addToInvites(name)}>YES</Button>
-              <Button size="small" className={classes.yesno}  >NO</Button>
+              <Button size="small" className={classes.yesno}  button onClick={() => removeFromInvites(name)}  >NO</Button>
             </CardActions>
           </Card> 
         )
