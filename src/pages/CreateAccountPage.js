@@ -40,6 +40,7 @@ export default function CreateAccountPage() {
   const [open, setOpen] = React.useState(false);
   const buttonId = 'createAccountButton';
   const history = useHistory();
+  
   function createAccount() {
     firebase.auth().signOut();
     const email = 'hekar32151@sumwan.com';

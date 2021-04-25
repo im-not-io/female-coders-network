@@ -8,6 +8,7 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import LoginPage from './pages/LoginPage';
 import CreateAccountPage from './pages/CreateAccountPage';
+import ProjectCreationPage from './pages/ProjectCreationPage'
 import SearchForTeammatesPage from './pages/SearchForTeammatesPage';
 import HomePage from './pages/HomePage'; 
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
@@ -63,6 +64,9 @@ function App() {
           </Route>
           <Route path="/search-for-teammates">
             <SearchForTeammatesPage />
+          </Route>
+          <Route path="/project-creation">
+            <ProjectCreationPage />
           </Route>
           <Route path="/">
             <HomePage />

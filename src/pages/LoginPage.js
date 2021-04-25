@@ -40,6 +40,7 @@ export default function LoginPage() {
   const [open, setOpen] = React.useState(false);
   const buttonId = 'loginButton';
   const history = useHistory();
+  
   function login() {
     firebase.auth().signOut();
     const email = 'shion8822@gmail.com';
@@ -67,7 +68,7 @@ export default function LoginPage() {
           <Paper className={classes.paper}>
             <Typography variant="h1" component="h1">
               Sign In
-          </Typography>
+            </Typography>
             <Grid container item xs={12} justify="center">
               <Grid item xs={12}>
                 <TextField label='Email' fullWidth />
