@@ -7,6 +7,7 @@ import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import LoginPage from './pages/LoginPage';
+import CreateAccountPage from './pages/CreateAccountPage';
 import SearchForTeammatesPage from './pages/SearchForTeammatesPage';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import firebase from 'firebase/app';
@@ -30,7 +31,11 @@ const firebaseConfig = {
   measurementId: "G-2J014V96VG"
 };
 
-firebase.initializeApp(firebaseConfig);
+if (!firebase.apps.length) {
+  firebase.initializeApp(firebaseConfig);
+}else {
+  firebase.app(); // if already initialized, use that one
+}
 
 const theme = createMuiTheme({
   typography: {
@@ -51,6 +56,9 @@ function App() {
         <Switch>
           <Route path="/login/">
             <LoginPage />
+          </Route>
+          <Route path="/create-account/">
+            <CreateAccountPage />
           </Route>
           <Route path="/search-for-teammates">
             <SearchForTeammatesPage />
