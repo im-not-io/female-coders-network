@@ -9,10 +9,9 @@ import { AirlineSeatLegroomNormal, CenterFocusStrong, EmojiObjects, SignalCellul
 import { Collapse } from '@material-ui/core';
 
 
-
 const useStyles = makeStyles({
   root: {
-    minWidth: 275,
+    minWidth: 275 ,
   },
   bullet: {
     display: 'inline-block',
@@ -50,21 +49,15 @@ const data = [
 export default function SimpleCard({setInviteList, inviteList}) {
   const classes = useStyles();
   function addToInvites(name) {
-      setInviteList(inviteList.concat([name])) 
+      setInviteList(inviteList.concat([name]))  // adds a name to the listInvites
   }
-
-  function removeFromInvites(name) {
-    inviteList.pop([name])
-}
-
 
   return data.map(n => {
         const name = n.nickname;
         const skills = n.skills.map(n => n+", "); 
         const interests = n.interests.map(n=> n+", "); 
 
-        
-
+      
         //console.log(n.nickname);
         return (  
           <Card className={classes.root}>
@@ -82,8 +75,8 @@ export default function SimpleCard({setInviteList, inviteList}) {
               </Typography>
             </CardContent>
             <CardActions>
-              <Button size="small" className={classes.yesno}  button onClick={() => addToInvites(name)}>YES</Button>
-              <Button size="small" className={classes.yesno}  button onClick={() => removeFromInvites(name)}  >NO</Button>
+              <Button size="small" variant="contained" color="primary"  button onClick={() => addToInvites(name)}>YES</Button>
+              <Button size="small" variant="contained" color="secondary"  button onClick={() => alert("You have removed an invitation")} >NO</Button>
             </CardActions>
           </Card> 
         )

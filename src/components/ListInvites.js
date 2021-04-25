@@ -15,11 +15,13 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import FolderIcon from '@material-ui/icons/Folder';
 import DeleteIcon from '@material-ui/icons/Delete';
+import { pink } from '@material-ui/core/colors';
 
 const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
         maxWidth: 752,
+        
     },
     demo: {
         backgroundColor: theme.palette.background.paper,
@@ -29,18 +31,21 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-function generate(element) {
-    return [0, 1, 2].map((value) =>
-        React.cloneElement(element, {
-            key: value,
-        }),
-    );
-}
 
-export default function InteractiveList({ inviteList }) {
+export default function InteractiveList({ inviteList, setInviteList }) {
     const classes = useStyles();
     const [dense, setDense] = React.useState(false);
     const [secondary, setSecondary] = React.useState(false);
+
+    console.log(inviteList)
+    function removeFromInvites(name) {          // removes the element which equals to name 
+        setInviteList(inviteList => inviteList.filter(function(value, index, arr){
+            return !(value == name);
+        })    )
+        
+    }
+        
+
 
     return (
         <div className={classes.root}>
@@ -59,9 +64,7 @@ export default function InteractiveList({ inviteList }) {
                                         secondary={secondary ? 'Secondary text' : null}
                                     />
                                     <ListItemSecondaryAction>
-                                        <IconButton edge="end" aria-label="delete">
-                                            <DeleteIcon />
-                                        </IconButton>
+                                        <button size="small" variant="contained" color="primary" onClick={() => removeFromInvites(name)}>remove</button>
                                     </ListItemSecondaryAction>
                                 </ListItem>
                             )

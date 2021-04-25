@@ -6,6 +6,7 @@ import Grid from '@material-ui/core/Grid';
 import SimpleCard from '../components/CardParticpant';
 import ListParticipant from '../components/ListParticipants'; 
 import ListInvites from '../components/ListInvites';
+import { pink } from '@material-ui/core/colors';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -18,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.text.secondary,
   },
   grid: {
-    marginTop: "25px"
+    marginTop: "25px", 
   },
 
   participantToSwipe: {
@@ -48,7 +49,7 @@ const data = {
 
 
 export default function SearchForTeammatesPage() {
-  const [inviteList, setInviteList] = React.useState(["Anne", "Kim", "Nick"]);
+  const [inviteList, setInviteList] = React.useState([]);
   const classes = useStyles();
     return (
       <div className = "bckgSearch">
@@ -60,13 +61,13 @@ export default function SearchForTeammatesPage() {
               <p>Description about how the swipey thing works </p>
                 <div id="cards" className = {classes.participantToSwipe}>
                 
-                  <SimpleCard setInviteList={setInviteList} inviteList={inviteList} />            
+                  <SimpleCard setInviteList={setInviteList} inviteList={inviteList}/>            
                 </div> 
    
               <div className={classes.invites}> 
                 
                 <div id="invites">
-                  <ListInvites inviteList={inviteList} />
+                  <ListInvites inviteList={inviteList} setInviteList={setInviteList} />
                 </div> 
               </div>
             </div>
