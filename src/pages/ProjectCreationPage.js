@@ -50,6 +50,13 @@ export default function ProjectCreationPage() {
     };
 
     const [roles, setRoles] = React.useState([]);
+    const handleRoles = (event) => 
+    {
+        let tmp = event.target.value
+        let oldArr = roles
+        oldArr.push(tmp)
+        setRoles(oldArr)
+    }
 
     const [startDate, setStartDate] = React.useState(new Date('2021-04-25T21:11:54'));
     const handleStartDate = (date) => {
@@ -75,6 +82,7 @@ export default function ProjectCreationPage() {
             "time-zone": timezone,
           }; 
 
+        console.log(payload)
         return payload;  
     }
 
@@ -98,7 +106,7 @@ export default function ProjectCreationPage() {
                     />
                     <Grid item xs={12}>
                         <Grid item xs={12}>
-                            <Autocomplete
+                            {/* <Autocomplete
                                 multiple
                                 id="tags-filled"
                                 options={topRoles.map((option) => option.title)}
@@ -112,10 +120,19 @@ export default function ProjectCreationPage() {
                                 }
                                 renderInput={(params) => (
                                     <TextField {...params} label="Desired Roles" placeholder="Roles"
+                                    onChange = {()=> console.log("here")}
                                     />
                                 )}
-                            />
+                            /> */}
+                            <InputLabel id="label">Desired Role</InputLabel>
+                            <Select labelId="label" id="select" value="20" onChange={handleRoles}>
+                                {
+                                    topRoles.map(e =>(<MenuItem value={e.title}>{e.title}</MenuItem>))
+                                }
+                            </Select>
+                            
                         </Grid>
+                        
                         <Grid item xs={12}>
                             <InputLabel id="demo-simple-select-helper-label">Age</InputLabel>
                             <Select
