@@ -39,7 +39,7 @@ export default function SearchForTeammatesPage() {
   const [inviteList, setInviteList] = React.useState([]);
   const classes = useStyles();
   return (
-    <div className="bckgSearch">
+    <div>
       <NavBar />
       <Grid container spacing={3} className={classes.grid}>
         <Grid item xs={12}>
