@@ -6,7 +6,7 @@ import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { AirlineSeatLegroomNormal, CenterFocusStrong, EmojiObjects, SignalCellularNoSimOutlined } from '@material-ui/icons';
-
+import { Collapse } from '@material-ui/core';
 
 
 
@@ -47,14 +47,21 @@ const data = [
 
 
 
-export default function SimpleCard() {
+export default function SimpleCard({setInviteList, inviteList}) {
   const classes = useStyles();
-  
+  function addToInvites(name) {
+      setInviteList(inviteList.concat([name])) 
+  }
+
+
   return data.map(n => {
         const name = n.nickname;
         const skills = n.skills; 
         const interests = n.interests; 
-        console.log(n.nickname);
+
+        
+
+        //console.log(n.nickname);
         return (  
           <Card className={classes.root}>
             <CardContent>
@@ -71,24 +78,23 @@ export default function SimpleCard() {
               </Typography>
             </CardContent>
             <CardActions>
-              <Button size="small" className={classes.yesno} button onClick={addToInvites(true)}>YES</Button>
-              <Button size="small" className={classes.yesno} button onClick={addToInvites(false)}>NO</Button>
+              <Button size="small" className={classes.yesno}  button onClick={() => addToInvites(name)}>YES</Button>
+              <Button size="small" className={classes.yesno}  >NO</Button>
             </CardActions>
           </Card> 
         )
-        }) 
+        })
+     
 }
 
-function addToInvites(testForYesOrNo){
-  if(testForYesOrNo){
-   // const str = document.getElementById("invites").innerText; 
-    //document.getElementById("invites").innerText = "<li> nickname </li>"+str;
+function addToInvites(name){
+ 
+    //card
+    console.log(name)
     changeCards();  
-  }else changeCards(); 
-
 } 
 
 function changeCards(){
    //TO DO get rid of the cards that we already yes/no 
-  console.log("cards are removed")
+  console.log("card are removed")
 }

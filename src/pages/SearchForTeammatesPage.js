@@ -4,7 +4,8 @@ import NavBar from '../components/NavBar';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import SimpleCard from '../components/CardParticpant';
-
+import ListParticipant from '../components/ListParticipants'; 
+import ListInvites from '../components/ListInvites';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -47,6 +48,7 @@ const data = {
 
 
 export default function SearchForTeammatesPage() {
+  const [inviteList, setInviteList] = React.useState(["Anne", "Kim", "Nick"]);
   const classes = useStyles();
     return (
       <div className = "bckgSearch">
@@ -57,14 +59,14 @@ export default function SearchForTeammatesPage() {
               <h1>Search for teammates page</h1>
               <p>Description about how the swipey thing works </p>
                 <div id="cards" className = {classes.participantToSwipe}>
-                  <SimpleCard />           
+                
+                  <SimpleCard setInviteList={setInviteList} inviteList={inviteList} />            
                 </div> 
    
               <div className={classes.invites}> 
                 
-                <h3>Invites send : </h3>
                 <div id="invites">
-                  
+                  <ListInvites inviteList={inviteList} />
                 </div> 
               </div>
             </div>
