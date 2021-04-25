@@ -8,8 +8,10 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import firebase from 'firebase/app';
 import 'firebase/auth';
-import Popover from '@material-ui/core/Popover';
-//import { Alert, AlertTitle } from '@material-ui/lab';
+import Alert from '@material-ui/lab/Alert';
+import Collapse from '@material-ui/core/Collapse';
+import { useHistory } from "react-router-dom";
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -26,81 +28,70 @@ const useStyles = makeStyles((theme) => ({
   button: {
     marginTop: theme.spacing(2)
   },
-  popover: {
-    padding: theme.spacing(2)
+  alert: {
+    textAlign: 'left !important'
   }
 }));
 
 
 export default function LoginPage() {
   const [anchorEl, setAnchorEl] = React.useState(null);
-  const [errorMessage, setErrorMessage] = React.useState('test string');
+  const [errorMessage, setErrorMessage] = React.useState('');
+  const [open, setOpen] = React.useState(false);
   const buttonId = 'loginButton';
+  const history = useHistory();
   function login() {
     firebase.auth().signOut();
-    const email = 'shion2@gmail.com';
-    const password = 'wrong';
+    const email = 'shion8822@gmail.com';
+    const password = 'testPassword';
     setAnchorEl(document.getElementById(buttonId));
     firebase.auth().signInWithEmailAndPassword(email, password)
       .then((userCredential) => {
         var user = userCredential.user;
         console.log(user)
+        history.push("/home");
       })
       .catch((error) => {
         var errorCode = error.code;
         var errorMessage = error.message;
         setErrorMessage(errorMessage);
+        setOpen(true);
       });
   }
-  
-  const handleClick = (event) => {
-    setAnchorEl(document.getElementById(buttonId));
-  };
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
   const classes = useStyles();
-  const open = Boolean(anchorEl);
-  const id = open ? 'error-popover' : undefined;
   return (
     <div>
       <NavBar />
       <Grid container spacing={3} className={classes.grid} justify="center">
-        <Grid item xs={6}>
+        <Grid item xs={4}>
           <Paper className={classes.paper}>
             <Typography variant="h1" component="h1">
               Sign In
           </Typography>
-            <Grid container xs={12} justify="center">
-              <Grid item xs={6}>
+            <Grid container item xs={12} justify="center">
+              <Grid item xs={12}>
                 <TextField label='Email' fullWidth />
               </Grid>
             </Grid>
-            <Grid container xs={12} justify="center">
-              <Grid item xs={6}>
+            <Grid container item xs={12} justify="center">
+              <Grid item xs={12}>
                 <TextField label='Password' fullWidth />
               </Grid>
             </Grid>
-            <Grid container xs={12} justify="center">
-              <Grid item xs={6} className={classes.button}>
+            <Grid container item xs={12} justify="center">
+              <Grid item xs={12} className={classes.button}>
                 <Button id={buttonId} variant="contained" color="primary" fullWidth onClick={login} >
                   Sign In
-              </Button>
-                <Popover
-                  open={open}
-                  anchorEl={anchorEl}
-                  onClose={handleClose}
-                  anchorOrigin={{
-                    vertical: 'bottom',
-                    horizontal: 'center',
-                  }}
-                  transformOrigin={{
-                    vertical: 'top',
-                    horizontal: 'center',
-                  }}
-                ><Typography variant="body1" component="span" className={classes.popover}>
-                    {errorMessage}
-                </Typography></Popover>
+                </Button>
+              </Grid>
+              <Grid item xs={12} className={classes.button}>
+                <Collapse in={open}>
+                  <Alert
+                    severity="error"
+                  ><Typography component='div' variant="body1" className={classes.alert}>
+                      {errorMessage}
+                  </Typography></Alert>
+                </Collapse>
               </Grid>
             </Grid>
           </Paper>
