@@ -11,6 +11,7 @@ import CreateAccountPage from './pages/CreateAccountPage';
 import ProjectCreationPage from './pages/ProjectCreationPage'
 import SearchForTeammatesPage from './pages/SearchForTeammatesPage';
 import HomePage from './pages/HomePage'; 
+import PrivateProjectPage from './pages/PrivateProjectPage'; 
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import firebase from 'firebase/app';
 
@@ -68,8 +69,8 @@ function App() {
           <Route path="/project-creation">
             <ProjectCreationPage />
           </Route>
-          <Route path="/private-poject-page">
-            <privatePojectPage />
+          <Route path="/private-project-page">
+            <PrivateProjectPage />
           </Route>
           <Route path="/">
             <HomePage />
