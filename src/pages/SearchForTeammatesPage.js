@@ -56,9 +56,9 @@ export default function SearchForTeammatesPage() {
             <div className={classes.paper}>
               <h1>Search for teammates page</h1>
               <p>Description about how the swipey thing works </p>
-              {/* <div id="cards" className = {classes.participantToSwipe}>
-                <SimpleCard />           
-              </div> */}
+                <div id="cards" className = {classes.participantToSwipe}>
+                  {/*<SimpleCard />*/}           
+                </div> 
    
               <div className={classes.invites}> 
                 
