@@ -8,6 +8,8 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import LoginPage from './pages/LoginPage';
 import SearchForTeammatesPage from './pages/SearchForTeammatesPage';
+import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
+import firebase from 'firebase/app';
 
 import {
   BrowserRouter as Router,
@@ -16,10 +18,34 @@ import {
   Link
 } from "react-router-dom";
 
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyAZ7UxXBsRU7KPuTm-EgC-lsAChodRNJ4E",
+  authDomain: "female-coders-network.firebaseapp.com",
+  databaseURL: "https://female-coders-network-default-rtdb.firebaseio.com",
+  projectId: "female-coders-network",
+  storageBucket: "female-coders-network.appspot.com",
+  messagingSenderId: "940123028784",
+  appId: "1:940123028784:web:bd485085ae1fbeeb6e5cf5",
+  measurementId: "G-2J014V96VG"
+};
+
+firebase.initializeApp(firebaseConfig);
+
+const theme = createMuiTheme({
+  typography: {
+    h1:{
+      fontSize:'2rem',
+      color:'black',
+      fontWeight:'bold'
+    }
+  },
+});
 
 function App() {
   return (
     <div className="App">
+    <ThemeProvider theme={theme}>      
       <Router>
       <div>
         <Switch>
@@ -35,6 +61,7 @@ function App() {
         </Switch>
       </div>
     </Router>
+    </ThemeProvider>
     </div>
   );
 }
