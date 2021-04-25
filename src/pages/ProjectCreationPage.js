@@ -17,6 +17,9 @@ import DateFnsUtils from '@date-io/date-fns';
 import 'date-fns';
 import InputLabel from '@material-ui/core/InputLabel';
 import Button from '@material-ui/core/Button';
+import { RotateLeft } from '@material-ui/icons';
+import firebase from 'firebase/app';
+import 'firebase/database';
 
 
 
@@ -32,6 +35,12 @@ const useStyles = makeStyles((theme) => ({
 
 export default function ProjectCreationPage() {
     const classes = useStyles();
+
+    const [name, setName] = React.useState(''); 
+    const handleName = (event) =>{
+        setName(event.target.value)
+    }; 
+
     const [age, setAge] = React.useState('');
     const handleAge = (event) => {
         setAge(event.target.value);
@@ -39,6 +48,12 @@ export default function ProjectCreationPage() {
     const handleZone = (event) => {
         setTimeZone(event.target.value);
     };
+
+    const [role, setRole] = React.useState(''); 
+    const handleRole = (event) => {
+        setRole(role.push(event.target.value)); 
+    }
+
     const [startDate, setStartDate] = React.useState(new Date('2021-04-25T21:11:54'));
     const handleStartDate = (date) => {
         setStartDate(date);
@@ -50,9 +65,28 @@ export default function ProjectCreationPage() {
     const [timezone, setTimeZone] = React.useState('');
     const buttonId = 'createProjectButton';
 
+    console.log(role)
+  
     function createProject() {
-        
+        console.log("start createProject")
+        const arr = [{
+            "project-name": name ,
+            "desired-roles" : role, 
+            "age": age,
+            "start-date": startDate, 
+            "end-date" : endDate, 
+            "time-zone": timezone,
+          }]; 
+
+        console.log(arr); 
+        return arr;  
     }
+
+    
+    React.useEffect(() => {
+       // firebase.database().ref('projects').set(createProject());
+       firebase.database().ref('projects').push().update(createProject());
+      })
 
     return (
         <div>
@@ -62,13 +96,17 @@ export default function ProjectCreationPage() {
                     <Typography variant="h1" component="h1">
                         Create a Project
                     </Typography>
-                    <TextField label='Project Name' fullWidth />
+                    <TextField label='Project Name' fullWidth 
+                        onChange={(handleName)}
+                        value={(name)}
+                    />
                     <Grid item xs={12}>
                         <Grid item xs={12}>
                             <Autocomplete
                                 multiple
                                 id="tags-filled"
                                 options={topRoles.map((option) => option.title)}
+                                autoSelect
                                 freeSolo
                                 renderTags={(value, getTagProps) =>
                                     value.map((option, index) => (
@@ -76,7 +114,10 @@ export default function ProjectCreationPage() {
                                     ))
                                 }
                                 renderInput={(params) => (
-                                    <TextField {...params} label="Desired Roles" placeholder="Roles" />
+                                    <TextField {...params} label="Desired Roles" placeholder="Roles" 
+                                        onChange={(handleRole)}
+                                        value={(role)}
+                                    />
                                 )}
                             />
                         </Grid>
@@ -142,9 +183,9 @@ export default function ProjectCreationPage() {
                                 <MenuItem value={'American Samoa'}>American Samoa</MenuItem>
                                 <MenuItem value={'Chamorro'}>Chamorro</MenuItem>
                             </Select>
-                        </Grid>
+                        </Grid>                 
                         <Grid item xs={12} className={classes.button}>
-                            <Button id={buttonId} variant="contained" color="primary" fullWidth onClick={createProject} >
+                            <Button id={buttonId} variant="contained" color="primary" fullWidth onClick={createProject} > 
                                 Create Project
                             </Button>
                         </Grid>

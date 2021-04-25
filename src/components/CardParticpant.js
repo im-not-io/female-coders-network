@@ -29,7 +29,7 @@ const useStyles = makeStyles({
 });
 
 // complete array 
-/*const data = [
+/*const data1 = [
   {
     "nickname": "Anne-Merel",
     "interests": ["AI", "Robots", "Drones"],
@@ -55,7 +55,7 @@ const useStyles = makeStyles({
     "interests": ["Design", "Comic Books"],
     "skills": ["3D-development", "UX-experiences"],
   }
-]; */
+];  */ 
 
 
 export default function SimpleCard({ setInviteList, inviteList }) {
@@ -63,10 +63,10 @@ export default function SimpleCard({ setInviteList, inviteList }) {
 
   const [data, setData] = React.useState([])
 
-  /*React.useEffect(() => {
-      firebase.database().ref('people').set(data);
-    }) */
-
+  /* React.useEffect(() => {
+      firebase.database().ref('people').set(data1);
+    }) 
+*/
   React.useEffect(() => {
     console.log("get firebase")
     firebase.database().ref('people').on('value', (snapshot) => {
